@@ -2,11 +2,14 @@
 const electron = require('electron');
 const { remote } = require('electron');
 const { dialog } = remote;
+const { ipcRenderer } = electron;
 const fs = require('fs');
 const Swal = require('sweetalert2');
 let photoData;
 let video
 let filePath = './saved_images/image.png'
+// const titleBar = document.getElementById("title-bar");
+const titleBarBtns = Array.from(document.getElementsByClassName("title-bar-btn"));
 
 function savePhoto(filePath) {
     if (filePath) {
@@ -24,12 +27,29 @@ function savePhoto(filePath) {
 }
 
 
+var checkbox = document.querySelector('input[type="checkbox"]');
+
+checkbox.addEventListener('change', function () {
+    var video = document.querySelector('video')
+    if (checkbox.checked) {
+        window.location = "index.html"
+        console.log('Checked');
+    } else {
+        // video.srcObject.getTracks()[0].enabled = true
+        // console.log("Video off");
+        video.srcObject.getTracks()[0].stop();
+        console.log("Video off");
+        console.log('Not checked');
+    }
+});
+
+
 function initialize() {
     Particles.init({
         selector: '#particles-bg',
         color: "#CCCCCC",
         connectParticles: true,
-        speed: 0.6,
+        speed: 1,
         minDistance: 150
     });
     video = window.document.querySelector('video');
@@ -42,6 +62,13 @@ function initialize() {
         video.srcObject = localMediaStream;
     }, errorCallback);
 }
+
+
+titleBarBtns.forEach((btn) => {
+    btn.addEventListener("click", (event) => {
+        ipcRenderer.send("action:main", btn.getAttribute("data-action"));
+    });
+});
 
 
 function takePhoto() {
@@ -63,7 +90,7 @@ function takePhoto() {
         var video = document.querySelector('video')
         video.srcObject.getTracks()[0].stop();
         console.log("Vid off");
-        window.location = "index.html"
+        // window.location = "index.html"
     })
 }
 

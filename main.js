@@ -9,8 +9,8 @@ let win
 function createWindow() {
 
    win = new BrowserWindow({
-      width: 1000,
-      height: 750, 
+      width: 900,
+      height: 650, 
       resizable: false,
       title: 'ElectronCam',
       webPreferences: {
@@ -18,6 +18,7 @@ function createWindow() {
         nodeIntegration: true,
         enableRemoteModule: true
       },
+      frame: false,
       transparent: true
     });
   
@@ -43,12 +44,7 @@ app.on('activate', () => {
   }
 })
 
-// ipcMain.on("close:modal", (event) => {
-//    inputModal.close();
-//    mainWindow.webContents.send('close:modal');
-// });
 
-// ipcMain.on("upload:modal", (event, fileData) => {
-//    inputModal.close();
-//    mainWindow.webContents.send('upload:modal', fileData);
-// });
+ipcMain.on("action:main", (event, action) => {
+  action === "close" ? win.close() : win.minimize();
+})

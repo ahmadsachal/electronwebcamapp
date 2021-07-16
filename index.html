@@ -3,21 +3,46 @@
 
 <head>
    <meta charset="UTF-8">
-   <title>Audio and Video</title>
+   <!-- <title>Audio and Video</title> -->
+   <link rel="stylesheet" href="./contents/bootstrap-4.5.3-dist/css/bootstrap.min.css" />
+   <!-- <link rel="stylesheet" href="./css/main.css"> -->
+   <script>let $ = require('jquery');</script>
+   <script>require('popper.js');</script>
+   <script>require('bootstrap');</script>
    <link href="app.css" rel="stylesheet" />
-   <!-- <link rel="stylesheet" href="css/font-awesome.min.css"> -->
+   <link rel="stylesheet" href="css/font-awesome.min.css">
 </head>
 
 <body>
-   <h1>Web Cam APP</h1>
+   <!-- <h1>Web Cam APP</h1> -->
+   <div id="title-bar">
+      <p class="title-bar-el" id="title-bar-title">Web Cam App</p>
+      <div class="title-bar-el" id="title-bar-btn-container">
+         <div class="title-bar-btn" id="title-bar-mini-btn" data-action="minimize">
+            <img class="title-bar-btn-img" id="title-bar-mini-btn-img" type="image/svg" draggable="false"
+               src="./icons/minimize.svg" />
+         </div>
+         <div class="title-bar-btn" id="title-bar-close-btn" data-action="close">
+            <img class="title-bar-btn-img" id="title-bar-close-btn-img" type="image/svg" draggable="false"
+               src="./icons/close.svg" />
+         </div>
+      </div>
+   </div>
+
    <canvas width="850" height="550" id="webcam"></canvas>
    <canvas id="particles-bg"></canvas>
    <video autoplay></video>
+   
    <div id="layer">
       <div id="takePhoto" onclick="takePhoto()">
          <i class="fa fa-camera" aria-hidden="true"></i>
       </div>
    </div>
+
+   <div class="custom-control custom-switch">
+      <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+      <label class="custom-control-label" for="customSwitch1"></label>
+    </div>
 </body>
 <script src="app.js"></script>
 <script type="text/javascript" src="./utils/particles.min.js"></script>
