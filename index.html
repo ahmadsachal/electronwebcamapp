@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="UTF-8">
+   <title>Audio and Video</title>
+   <link href="app.css" rel="stylesheet" />
+   <!-- <link rel="stylesheet" href="css/font-awesome.min.css"> -->
+</head>
+
+<body>
+   <h1>Web Cam APP</h1>
+   <canvas width="850" height="550" id="webcam"></canvas>
+   <canvas id="particles-bg"></canvas>
+   <video autoplay></video>
+   <div id="layer">
+      <div id="takePhoto" onclick="takePhoto()">
+         <i class="fa fa-camera" aria-hidden="true"></i>
+      </div>
+   </div>
+</body>
+<script src="app.js"></script>
+<script type="text/javascript" src="./utils/particles.min.js"></script>
+
+</html>
