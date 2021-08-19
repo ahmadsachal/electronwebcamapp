@@ -5,12 +5,13 @@ const { dialog } = remote;
 const { ipcRenderer } = electron;
 const fs = require('fs');
 const Swal = require('sweetalert2');
+var usb = require('usb')
 let photoData;
 let video
 let filePath = './saved_images/image.png'
 // const titleBar = document.getElementById("title-bar");
 const titleBarBtns = Array.from(document.getElementsByClassName("title-bar-btn"));
-
+console.log(usb.getDeviceList())
 function savePhoto(filePath) {
     if (filePath) {
         fs.writeFile(filePath, photoData, 'base64', (err) => {

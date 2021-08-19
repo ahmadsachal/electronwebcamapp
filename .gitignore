@@ -132,7 +132,7 @@ wheels/
 .installed.cfg
 *.egg
 MANIFEST
-
+yarn.lock
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
@@ -211,7 +211,7 @@ venv.bak/
 .mypy_cache/
 
 config.py
-*.json
+# *.json
 *.csv
 
 *.idea/
